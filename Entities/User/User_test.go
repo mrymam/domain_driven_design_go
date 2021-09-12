@@ -32,7 +32,7 @@ func TestUpdateUserNameSuccess(t *testing.T) {
 	err := user.UpdateName("new-username")
 
 	assert.Nil(t, err)
-	assert.Equal(t, "new-username", user.GetName())
+	assert.Equal(t, "new-username", user.GetName().GetValue())
 }
 
 func TestUpdateUserNameFail(t *testing.T) {
@@ -40,5 +40,12 @@ func TestUpdateUserNameFail(t *testing.T) {
 	err := user.UpdateName("")
 
 	assert.NotNil(t, err)
-	assert.Equal(t, "username", user.GetName())
+	assert.Equal(t, "username", user.GetName().GetValue())
+}
+
+func TestEqualUser(t *testing.T) {
+	user, _ := NewUser("userid", "username")
+	user2, _ := NewUser("userid", "username2")
+
+	assert.True(t, user.Equal(*user2))
 }

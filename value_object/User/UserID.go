@@ -29,3 +29,7 @@ func NewUserID(value string) (*UserID, error) {
 func (u UserID) GetValue() string {
 	return u.value
 }
+
+func (u UserID) Equal(other UserID) bool {
+	return u.GetValue() == other.GetValue()
+}

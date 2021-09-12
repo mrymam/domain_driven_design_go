@@ -36,6 +36,14 @@ func (u *User) UpdateName(nameStr string) error {
 	return nil
 }
 
-func (u User) GetName() string {
-	return u.name.GetValue()
+func (u User) GetName() UserValues.UserName {
+	return u.name
+}
+
+func (u User) GetID() UserValues.UserID {
+	return u.id
+}
+
+func (u User) Equal(other User) bool {
+	return u.id.Equal(other.GetID())
 }
